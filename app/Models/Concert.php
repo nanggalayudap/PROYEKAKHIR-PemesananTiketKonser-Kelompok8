@@ -12,6 +12,7 @@ class Concert extends Model
         'user_id',
         'title',
         'slug',
+        'genre',
         'banner',
         'lineup',
         'description',
