@@ -15,7 +15,24 @@ class Order extends Model
         'total_price',
         'payment_proof',
         'status',
+        'expires_at',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'expires_at' => 'datetime',
+        ];
+    }
+
+    public function effectiveStatus(): string
+    {
+        if ($this->status === 'pending' && $this->expires_at && $this->expires_at->isPast()) {
+            return 'expired';
+        }
+
+        return $this->status;
+    }
 
     public function user(): BelongsTo
     {
