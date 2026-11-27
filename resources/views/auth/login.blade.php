@@ -1,7 +1,6 @@
 <x-guest-layout>
     <div
         x-data="{
-            loginAs: 'customer',
             email: @js(old('email', '')),
             password: '',
             showPassword: false,
@@ -13,47 +12,9 @@
             }
         }"
     >
-        <div class="mb-5 text-center">
+        <div class="mb-6 text-center">
             <h1 class="text-2xl font-extrabold tracking-tight text-[#23238E]">Masuk ke Eventra</h1>
-            <p class="mt-1.5 text-sm text-[#646B8A]" x-text="loginAs === 'eo' ? 'Masuk ke dashboard Event Organizer untuk kelola konser & tiket.' : 'Kelola tiket konser dan pesananmu dengan mudah.'">
-                Kelola tiket konser dan pesananmu dengan mudah.
-            </p>
-        </div>
-
-        <!-- Account Mode Switcher (Customer / Event Organizer) -->
-        <div class="mb-5 grid grid-cols-2 gap-2 rounded-2xl border border-[#E2E7F5] bg-[#F6F8FC] p-1.5">
-            <button
-                type="button"
-                @click="loginAs = 'customer'"
-                :aria-pressed="loginAs === 'customer'"
-                :class="loginAs === 'customer'
-                    ? 'bg-[#23238E] text-white shadow-sm'
-                    : 'text-[#646B8A] hover:text-[#23238E]'"
-                class="flex items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold transition focus:outline-none"
-            >
-                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                </svg>
-                <span>Customer</span>
-            </button>
-            <button
-                type="button"
-                @click="loginAs = 'eo'"
-                :aria-pressed="loginAs === 'eo'"
-                :class="loginAs === 'eo'
-                    ? 'bg-[#23238E] text-white shadow-sm'
-                    : 'text-[#646B8A] hover:text-[#23238E]'"
-                class="flex items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold transition focus:outline-none"
-            >
-                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
-                    <path d="M13 5v2" />
-                    <path d="M13 17v2" />
-                    <path d="M13 11v2" />
-                </svg>
-                <span>Event Organizer</span>
-            </button>
+            <p class="mt-1.5 text-sm text-[#646B8A]">Kelola tiket konser, event, dan pesananmu dengan mudah.</p>
         </div>
 
         <!-- Session Status -->
@@ -69,9 +30,7 @@
 
             <!-- Email Address -->
             <div>
-                <label for="email" class="block text-sm font-semibold text-[#18184A]" x-text="loginAs === 'eo' ? 'Email Resmi EO' : 'Email'">
-                    Email
-                </label>
+                <label for="email" class="block text-sm font-semibold text-[#18184A]">Email</label>
                 <div class="relative mt-1.5">
                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#646B8A]">
                         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -89,7 +48,7 @@
                         required
                         autofocus
                         autocomplete="username"
-                        :placeholder="loginAs === 'eo' ? 'official@perusahaan-eo.com' : 'nama@email.com'"
+                        placeholder="nama@email.com"
                         :class="emailInvalid ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-300' : 'border-[#E2E7F5] focus:border-[#3C84D8] focus:ring-[#F5A4E3]'"
                         class="block w-full rounded-xl bg-[#F6F8FC]/60 py-2.5 pl-10 pr-3.5 text-sm text-[#18184A] placeholder-[#646B8A] shadow-sm transition focus:bg-white focus:outline-none focus:ring-2"
                     />
@@ -191,9 +150,7 @@
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0 1 8-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 0 1 4 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                <span x-text="submitting ? 'Memproses...' : (loginAs === 'eo' ? 'Masuk sebagai Event Organizer' : 'Masuk sebagai Customer')">
-                    Masuk sebagai Customer
-                </span>
+                <span x-text="submitting ? 'Memproses...' : 'Masuk'">Masuk</span>
             </button>
 
             @if (Route::has('register'))
