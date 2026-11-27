@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .page-stage {
+        transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms ease;
+        will-change: transform, opacity;
+    }
+
+    .page-exit-left {
+        opacity: 0;
+        transform: translateX(-28px);
+    }
+
+    .page-exit-right {
+        opacity: 0;
+        transform: translateX(28px);
+    }
+
+    .page-enter-from-right {
+        opacity: 0;
+        transform: translateX(28px);
+    }
+
+    .page-enter-from-left {
+        opacity: 0;
+        transform: translateX(-28px);
+    }
+}

@@ -14,6 +14,19 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                eventra: {
+                    navy: '#23238E',
+                    blue: '#3C84D8',
+                    pink: '#F5A4E3',
+                    peach: '#FCE2C1',
+                    blush: '#FAD0D8',
+                    surface: '#F6F8FC',
+                    ink: '#18184A',
+                    muted: '#646B8A',
+                    border: '#E2E7F5',
+                },
+            },
         },
     },
 
