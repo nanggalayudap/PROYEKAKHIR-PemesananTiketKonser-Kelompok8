@@ -39,12 +39,6 @@ Route::middleware(['auth', 'role:admin'])
         Route::get('/orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
     });
 
-Route::middleware(['auth', 'role:organizer'])->prefix('organizer')->name('organizer.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -53,3 +47,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/customer.php';
 require __DIR__.'/auth.php';
+require __DIR__.'/organizer.php';

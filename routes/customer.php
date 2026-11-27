@@ -24,3 +24,4 @@ Route::middleware(['auth', 'role:customer'])->group(function () {
     Route::post('/orders/{order}/proof', [OrderController::class, 'uploadProof'])->name('orders.proof');
     Route::get('/orders/{order}/eticket', [OrderController::class, 'eticket'])->name('orders.eticket');
 });
+
